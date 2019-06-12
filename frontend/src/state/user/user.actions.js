@@ -5,7 +5,7 @@ export default {
     return new Promise((resolve, reject) => {
       Vue.http
         .get('/api/user/get')
-        .then(({body}) => {
+        .then(({ body }) => {
           context.commit('SET_USER', body)
           resolve()
         })
@@ -13,10 +13,10 @@ export default {
     })
   },
 
-  signUp (context, {name, password}) {
+  signUp (context, { name, password }) {
     return new Promise((resolve, reject) => {
       Vue.http
-        .post('/api/register/post', {name, password})
+        .post('/api/register/post', { name, password })
         .then(() => {
           context.commit('RESET_USER')
           resolve()
@@ -25,14 +25,14 @@ export default {
     })
   },
 
-  signIn (context, {name, password}) {
+  signIn (context, { name, password }) {
     return new Promise((resolve, reject) => {
       Vue.http
         .post('/api/login/post', {
           name,
           password
         })
-        .then(({body}) => {
+        .then(({ body }) => {
           context.commit('SET_IS_USER_AUTHENTICATED', true)
           resolve(body)
         })
